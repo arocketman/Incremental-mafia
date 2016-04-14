@@ -3,8 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Faker\Factory as Faker;
-
+use App\Libraries\SoldierFactory;
 
 /**
  * App\Soldier
@@ -24,16 +23,12 @@ class Soldier extends Model
 
     /**
      * Generates a random soldier.
+     * @param $userID the ID of the authenticated user.
      * @return Soldier
      */
     public static function generateRandomSoldier($userID)
     {
-        $faker = Faker::create();
-        $soldier = new Soldier;
-        $soldier->setAttribute('name', $faker->name);
-        $soldier->setAttribute('influence_per_minute', rand(1, 5));
-        $soldier->setAttribute('user_id',$userID);
-        return $soldier;
+        return SoldierFactory::produceSoldier('picciotto',$userID);
     }
     
 }
