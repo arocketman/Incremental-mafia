@@ -16,8 +16,4 @@ We are family
         {!! Form::submit('Get new soldier', ['class' => 'btn btn-primary form-control']) !!}
     {!! Form::close() !!}
 
-    {!! Form::open(['url' => 'family/updateIP']) !!}
-        {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
-    {!! Form::close() !!}
-
 @endsection
