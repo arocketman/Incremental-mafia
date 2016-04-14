@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('panel-title')
-    {{ Auth::User()->name }}'s family . | <span id="total-ip">@{{ totalIP }}</span> IP
+    {{ Auth::User()->name }}'s family . | <span id="total-ip">@{{ Math.floor(totalIP) }}</span> IP
 @endsection
 
 @section('content')

@@ -43,7 +43,7 @@ class HomeController extends Controller
     }
 
     public function updateIP(){
-        return Auth::user()->updateIP();
+        return response()->json(['totalIP' => Auth::user()->updateIP() , 'incrementPS' => Auth::user()->getTotalInfluencePerSecond()]);
     }
     
 }

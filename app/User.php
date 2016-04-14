@@ -65,7 +65,7 @@ class User extends Authenticatable
         return $totalInfluencePerMinute;
     }
 
-    private function getTotalInfluencePerSecond()
+    public function getTotalInfluencePerSecond()
     {
         return $this->getTotalInfluencePerMinute()/60;
     }
