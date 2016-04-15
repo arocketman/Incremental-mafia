@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Soldier;
-use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -12,7 +10,6 @@ class HomeController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -29,19 +26,22 @@ class HomeController extends Controller
         return view('home');
     }
 
+    /**
+     * Redirects to the family page if hte user is logged in and attempts to access its own family page.
+     * @param $request
+     * @return mixed
+     */
     public function family($request)
     {
         if(Auth::user()->id == $request)
             return view('family\family');
         return view('home');
     }
-
-    public function newSoldier(){
-        $soldier = Soldier::generateRandomSoldier(Auth::user()->id);
-        Auth::user()->soldiers()->create($soldier->toArray());
-        return $this->family(Auth::user()->id);
-    }
-
+    
+    /**
+     * Asks the server for an influence point update and returns the new value.
+     * @return json
+     */
     public function updateIP(){
         return response()->json(['totalIP' => Auth::user()->updateIP() , 'incrementPS' => Auth::user()->getTotalInfluencePerSecond()]);
     }

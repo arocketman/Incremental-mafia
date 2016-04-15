@@ -47,9 +47,16 @@ class User extends Authenticatable
         $totalInfluencePerMinute = $this->getTotalInfluencePerSecond();
         $modifier = floor($diffInMinutes * $totalInfluencePerMinute);
         if($modifier > 0)
-            $this->influence = $this->influence += $modifier;
+            $this->influence += $modifier;
         $this->save();
         return $this->influence;
+    }
+
+    public function decreaseIP($amount){
+        $this->influence -= $amount;
+        if($this->influence < 0)
+            $this->influence = 0;
+        $this->save();
     }
 
     //

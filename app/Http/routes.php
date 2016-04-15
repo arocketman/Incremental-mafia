@@ -1,11 +1,11 @@
 <?php
-Route::get('/', function () {
-    return "hi";
-});
 
-Route::auth();
-
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/family/{id}','HomeController@family');
-Route::post('/family/newSoldier','HomeController@newSoldier');
 Route::get('/api/updateIP','HomeController@updateIP');
+Route::get('/api/getSoldiersList','SoldiersController@getSoldiersList');
+Route::post('/api/newSoldier','SoldiersController@newSoldier');
+Route::post('api/deleteSoldier/{soldierID}','SoldiersController@deleteSoldier');
+
+Route::auth();
