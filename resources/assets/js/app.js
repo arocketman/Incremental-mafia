@@ -1,3 +1,7 @@
+Vue.component('my-modal',{
+    template:'#modal-template',
+});
+
 /** BUTTON WITH TOKEN COMPONENT **/
 Vue.component('button-token',{
     template: '#button-with-token',
@@ -22,6 +26,7 @@ Vue.component('button-token',{
     }
 })
 
+/**
 
 /** SOLDIER LI COMPONENT **/
 
@@ -44,6 +49,10 @@ Vue.component('soldier-li',{
                 }.bind(this),
                 dataType: 'json'
             });
+        },
+
+        sendMessageToParent: function(){
+            this.$dispatch('toggle-soldier',this.soldier);
         }
     }
 
@@ -55,6 +64,7 @@ new Vue({
         totalIP:10,
         incrementPS: 0,
         soldiersList: [],
+        activeSoldier: []
     },
     ready: function() {
         this.getTotalIP();
@@ -86,6 +96,10 @@ new Vue({
 
         'ip-updated':function(){
             this.getTotalIP();
+        },
+
+        'toggle-soldier':function(soldier){
+            this.activeSoldier = soldier;
         }
     }
 
