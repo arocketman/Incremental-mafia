@@ -15,7 +15,7 @@ class SoldierFactory
         $faker = Faker::create();
         $soldier = new Soldier;
         $soldier->setAttribute('name', $faker->name);
-        $soldier->setAttribute('influence_per_minute', rand(1, 5));
+        $soldier->setAttribute('influence_per_minute', UtilityFunctions::float_rand(\Config::get('constants.picciotto_min_IPM'),\Config::get('constants.picciotto_max_IPM')));
         $soldier->setAttribute('user_id',$userID);
         return $soldier;
     }

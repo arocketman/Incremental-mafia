@@ -16,7 +16,7 @@ class CreateSoldiersTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->string('name');
-            $table->integer('influence_per_minute')->unsigned();
+            $table->float('influence_per_minute')->unsigned();
             $table->timestamps();
         });
     }
