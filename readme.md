@@ -17,9 +17,9 @@ Even though the game could've been completely JS based I wanted to play around w
 
 ## Images
 
-![Gameplay 1](/imagesReadme/1.png)
+![Gameplay 1](/imagesReadme/1.PNG)
 
-![Gameplay 2](/imagesReadme/2.png)
+![Gameplay 2](/imagesReadme/2.PNG)
 
 ![Gameplay 3](/imagesReadme/3.png)
 
