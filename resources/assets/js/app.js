@@ -31,7 +31,7 @@ new Vue({
 
     events: {
         'list-updated': function(list){
-            this.soldiersList = list;
+            this.getSoldiersList();
         },
 
         'ip-updated':function(){

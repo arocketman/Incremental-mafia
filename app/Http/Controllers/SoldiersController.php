@@ -17,9 +17,10 @@ class SoldiersController extends Controller
      */
     public function newSoldier(){
         $soldierPrice = Auth::user()->soldiers->count() * \Config::get('constants.base_soldier_cost');
+        //Avoiding soldierPrice equal to 0.
+        $soldierPrice = $soldierPrice ?: \Config::get('constants.base_soldier_cost');
         if (Auth::user()->influence < $soldierPrice) {
             return (UtilityFunctions::json_response_error(Auth::user()->soldiers));
-            //flash no IP.
         }
         Auth::user()->decreaseIP(25);
         $soldier = Soldier::generateRandomSoldier(Auth::user()->id);
