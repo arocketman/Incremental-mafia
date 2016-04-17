@@ -1,7 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Andreuccio
- * Date: 15/04/2016
- * Time: 15:57
- */
+
+return [
+    /* Modifiers for soldiers */
+    'picciotto_min_IPM' => 0.1,
+    'picciotto_max_IPM' => 0.6,
+
+    /* Soldiers Cost */
+    'base_soldier_cost' => 25,
+];

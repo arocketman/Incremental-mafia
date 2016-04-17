@@ -29,6 +29,11 @@
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
+            @if(Session::has('flash_message'))
+                <div class="alert alert-success">
+                    {{Session::get('flash_message')}}
+                </div>
+            @endif
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->

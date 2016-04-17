@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('influence')->default(50);
+            $table->dateTime('bonusIpRedeemDate');
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();

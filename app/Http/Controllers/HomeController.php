@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Libraries\UtilityFunctions;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -34,7 +36,7 @@ class HomeController extends Controller
     public function family($request)
     {
         if(Auth::user()->id == $request)
-            return view('family\family');
+            return view('family/family');
         return view('home');
     }
     
@@ -45,5 +47,17 @@ class HomeController extends Controller
     public function updateIP(){
         return response()->json(['totalIP' => Auth::user()->updateIP() , 'incrementPS' => Auth::user()->getTotalInfluencePerSecond()]);
     }
-    
+
+    public function redeemBonusIP(){
+        if(!Auth::user()->bonusIpRedeemed()){
+            Auth::user()->influence += 100;
+            Auth::user()->bonusIpRedeemDate = Carbon::now();
+            Auth::user()->save();
+            return UtilityFunctions::json_response_ok();
+        }
+        return UtilityFunctions::json_response_error();
+    }
+
+
+
 }

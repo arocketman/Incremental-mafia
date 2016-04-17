@@ -20,4 +20,12 @@ class UtilityFunctions
 
         return $randomfloat;
     }
+
+    public static function json_response_ok($data = null){
+        return response()->json(['response'=>'OK','data'=>$data]);
+    }
+
+    public static function json_response_error($data = null){
+        return response()->json(['response'=>'ERROR','data'=>$data]);
+    }
 }

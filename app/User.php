@@ -77,4 +77,12 @@ class User extends Authenticatable
         return $this->getTotalInfluencePerMinute()/60;
     }
 
+    /**
+     * @return the user already redeemd its daily bonus ip.
+     */
+    public function bonusIpRedeemed()
+    {
+        return Carbon::now()->day == Carbon::parse($this->bonusIpRedeemDate)->day;
+    }
+
 }

@@ -12,8 +12,7 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
-
-    mix.scripts(['app.js'])
+    mix.sass(['app.scss']);
+    mix.scripts(['vue-components/vue-family-components.js','app.js','sweetalert.min.js'])
         .version(['css/app.css','js/all.js']);
 });

@@ -4,6 +4,8 @@
 @endsection
 
 @section('content')
+    <get-click-influence remaining-ip-to-bonus={{Auth::User()->bonusIpRedeemed() ? 0 : 100}} token='{{ Session::token() }}'></get-click-influence>
+
     <h4>Family workers:</h4>
     <ul>
         <soldier-li token='{{ Session::token() }}' v-for="soldier in soldiersList | orderBy 'influence_per_minute' -1" :soldier="soldier">
@@ -47,5 +49,12 @@
             </div>
 
         </div>
+    </div>
+</template>
+
+<template id="get-click-influence-template">
+    <div id="influenceByClick">
+        <button v-on:click="gainInfluence" type="button" class="btn btn-default btn-circle btn-xl"><i class="glyphicon glyphicon glyphicon-king"></i></button>
+        <h4>Click the button to unlock your Influence point bonus! Clicks remaining: @{{ remainingIpToBonus }}</h4>
     </div>
 </template>

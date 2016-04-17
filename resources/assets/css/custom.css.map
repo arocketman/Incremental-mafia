@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAEA;EACE,gBAAe,EAChB;;AAED;EACE,eAAc;EACd,gBAAe,EAChB","file":"custom.css","sourcesContent":["// @import \"node_modules/bootstrap-sass/assets/stylesheets/bootstrap\";\n\n#total-ip{\n  color:seagreen;\n}\n\n.removeSoldierGliph{\n  color:#D23535;\n  font-size:10px;\n}"],"sourceRoot":"/source/"}

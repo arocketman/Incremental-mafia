@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Libraries\UtilityFunctions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Soldier;
@@ -16,14 +16,15 @@ class SoldiersController extends Controller
      * @return The soldiers list.
      */
     public function newSoldier(){
-        if (Auth::user()->influence < 5) {
-            return (Auth::user()->soldiers);
+        $soldierPrice = Auth::user()->soldiers->count() * \Config::get('constants.base_soldier_cost');
+        if (Auth::user()->influence < $soldierPrice) {
+            return (UtilityFunctions::json_response_error(Auth::user()->soldiers));
             //flash no IP.
         }
         Auth::user()->decreaseIP(25);
         $soldier = Soldier::generateRandomSoldier(Auth::user()->id);
         Auth::user()->soldiers()->create($soldier->toArray());
-        return (Auth::user()->soldiers);
+        return (UtilityFunctions::json_response_ok(Auth::user()->soldiers));
     }
 
     public function deleteSoldier($soldierID){
